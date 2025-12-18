@@ -1,15 +1,28 @@
 slug: new-troll-party
 title: New Troll Party
-tagline: A three-player bidding game where the goal is to come out in the middle.
+tagline: A three-player bidding game where winning too much is just as bad as losing.
 players: 3
 playtime: 20–30 minutes
 age: 10+
 status: coming_soon
 featured: true
 
+description: >
+  In New Troll Party, each round everyone secretly bids at the table.
+  Win the middle bid to take the scuffle — or deliberately go high or low
+  to steal goats and shift the balance.
+  After twelve scuffles, the troll who ends up in the middle wins.
+
+how_it_plays:
+  - Everyone secretly plays one card each round.
+  - The middle card wins the scuffle.
+  - The highest or lowest card manipulates goats instead.
+  - You must win some scuffles, but not too many.
+  - After 12 rounds, whoever ends up in the middle wins.
+
 # Put an image at: static/images/games/new-troll-party/hero.jpg
 # Or change this path.
-hero_image: /static/images/games/new-troll-party/hero.jpg
+hero_image: /static/images/games/new-troll-party/under_bridge.png
 
 rules:
   pdf: /static/downloads/new-troll-party-rules.pdf
