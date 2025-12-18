@@ -32,7 +32,8 @@
           {% if featured.age %}<span class="pill">{{ featured.age }}</span>{% endif %}
         </div>
 
-        {% include "components/kickstarter_card.html" with context %}
+        {% set game = featured %}
+        {% include "components/kickstarter_card.html" %}
         <div class="spacer"></div>
         <a class="btn primary full" href="{{ url_for('game_detail', slug=featured.slug) }}">View game page</a>
       </div>
