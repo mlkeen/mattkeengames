@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Games · {{ site_name }}{% endblock %}
+
+{% block content %}
+<section class="page-head">
+  <h1>Games</h1>
+  <p class="muted">Rules, videos, and campaign links.</p>
+</section>
+
+<div class="grid">
+  {% for g in games %}
+    <a class="tile" href="{{ url_for('game_detail', slug=g.slug) }}">
+      <div class="tile-title">{{ g.title }}</div>
+      <div class="tile-sub muted">{{ g.tagline }}</div>
+      <div class="tile-meta">
+        {% if g.players %}<span class="pill">{{ g.players }} players</span>{% endif %}
+        {% if g.playtime %}<span class="pill">{{ g.playtime }}</span>{% endif %}
+        {% if g.status %}<span class="pill">{{ g.status|replace('_',' ')|title }}</span>{% endif %}
+      </div>
+    </a>
+  {% endfor %}
+</div>
+{% endblock %}

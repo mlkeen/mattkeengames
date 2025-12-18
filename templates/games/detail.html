@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}{{ game.title }} · {{ site_name }}{% endblock %}
+
+{% block meta %}
+<meta name="description" content="{{ game.tagline }}">
+<meta property="og:title" content="{{ game.title }} · {{ site_name }}">
+<meta property="og:description" content="{{ game.tagline }}">
+{% if game.hero_image %}<meta property="og:image" content="{{ game.hero_image }}">{% endif %}
+{% endblock %}
+
+{% block content %}
+<section class="game-hero">
+  <div class="game-hero-left">
+    <h1>{{ game.title }}</h1>
+    <p class="lede">{{ game.tagline }}</p>
+
+    <div class="pill-row">
+      {% if game.players %}<span class="pill">{{ game.players }} players</span>{% endif %}
+      {% if game.playtime %}<span class="pill">{{ game.playtime }}</span>{% endif %}
+      {% if game.age %}<span class="pill">{{ game.age }}</span>{% endif %}
+      {% if game.status %}<span class="pill">{{ game.status|replace('_',' ')|title }}</span>{% endif %}
+    </div>
+
+    <div class="cta-row">
+      {% if game.rules and game.rules.pdf %}
+        <a class="btn primary" href="{{ game.rules.pdf }}">Download rules (PDF)</a>
+      {% endif %}
+      {% if game.kickstarter and game.kickstarter.url %}
+        <a class="btn" href="{{ game.kickstarter.url }}" target="_blank" rel="noreferrer">Kickstarter</a>
+      {% endif %}
+    </div>
+
+    {% include "components/kickstarter_card.html" with context %}
+  </div>
+
+  <div class="game-hero-right">
+    {% if game.hero_image %}
+      <img class="hero-image" src="{{ game.hero_image }}" alt="{{ game.title }} hero image">
+    {% else %}
+      <div class="image-placeholder">Add a hero image at <code>static/images/games/{{ game.slug }}/hero.jpg</code></div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section">
+  <h2>Videos</h2>
+  {% if game.videos %}
+    <div class="video-grid">
+      {% for v in game.videos %}
+        {% include "components/video_embed.html" %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="muted">No videos yet.</p>
+  {% endif %}
+</section>
+
+<section class="section">
+  <h2>Downloads</h2>
+  <div class="stack">
+    {% if game.rules and game.rules.pdf %}
+      <a class="row" href="{{ game.rules.pdf }}">
+        <div>
+          <div class="row-title">Rules PDF</div>
+          <div class="muted">Printable rules</div>
+        </div>
+        <div class="muted">Download →</div>
+      </a>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

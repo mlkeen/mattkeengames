@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Devlog · {{ site_name }}{% endblock %}
+
+{% block content %}
+<section class="page-head">
+  <h1>Devlog</h1>
+  <p class="muted">Updates you can reuse for campaign posts and rules clarifications.</p>
+</section>
+
+<div class="stack">
+  {% for p in posts %}
+    <a class="row" href="{{ url_for('blog_post', slug=p.slug) }}">
+      <div>
+        <div class="row-title">{{ p.title }}</div>
+        <div class="muted">{% if p.date %}{{ p.date }}{% else %}—{% endif %}</div>
+      </div>
+      <div class="muted">Read →</div>
+    </a>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,3 @@
+# Railway will detect a Python app automatically.
+# You can also set the start command in the Railway UI to:
+# gunicorn app:app

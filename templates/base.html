@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ site_name }}{% endblock %}</title>
+
+  {% block meta %}
+  <meta name="description" content="Board and card games by Matt Keen. Rules, videos, and campaign updates.">
+  {% endblock %}
+
+  <meta property="og:site_name" content="{{ site_name }}">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+</head>
+<body>
+  {% include "partials/nav.html" %}
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "partials/footer.html" %}
+</body>
+</html>

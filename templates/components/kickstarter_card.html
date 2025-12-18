@@ -1,0 +1,24 @@
+{# expects `game` in context #}
+{% if game.kickstarter %}
+  {% set ks = game.kickstarter %}
+  <div class="ks card subtle">
+    <div class="ks-top">
+      <div class="kicker">Kickstarter</div>
+      {% if ks.status %}
+        <span class="pill">{{ ks.status|replace('_',' ')|title }}</span>
+      {% endif %}
+    </div>
+    {% if ks.blurb %}<div class="muted">{{ ks.blurb }}</div>{% endif %}
+    <div class="ks-actions">
+      {% if ks.url %}
+        <a class="btn small" href="{{ ks.url }}" target="_blank" rel="noreferrer">View campaign</a>
+      {% endif %}
+      {% if ks.launch_date %}
+        <span class="muted">Launch: {{ ks.launch_date }}</span>
+      {% endif %}
+      {% if ks.end_date %}
+        <span class="muted">Ends: {{ ks.end_date }}</span>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

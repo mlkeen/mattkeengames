@@ -1,0 +1,16 @@
+{# expects `v` (dict) in loop scope #}
+<div class="video-card">
+  {% if v.type == "youtube" %}
+    <div class="video-frame">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/{{ v.id }}"
+        title="{{ v.label or 'Video' }}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+    <div class="video-label">{{ v.label or "Video" }}</div>
+  {% else %}
+    <div class="muted">Unsupported video type.</div>
+  {% endif %}
+</div>

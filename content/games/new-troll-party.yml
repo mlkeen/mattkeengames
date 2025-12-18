@@ -1,0 +1,27 @@
+slug: new-troll-party
+title: New Troll Party
+tagline: A three-player bidding game where the goal is to come out in the middle.
+players: 3
+playtime: 20–30 minutes
+age: 10+
+status: coming_soon
+featured: true
+
+# Put an image at: static/images/games/new-troll-party/hero.jpg
+# Or change this path.
+hero_image: /static/images/games/new-troll-party/hero.jpg
+
+rules:
+  pdf: /static/downloads/new-troll-party-rules.pdf
+  online: false
+
+videos:
+  - type: youtube
+    id: dQw4w9WgXcQ
+    label: Learn to Play (placeholder)
+
+kickstarter:
+  status: coming_soon
+  url: https://www.kickstarter.com/
+  launch_date: 2026-01-15
+  blurb: Bluff, scheme, and toss goats without winning too much.
