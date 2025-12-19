@@ -17,9 +17,9 @@
   <meta property="og:image" content="{% block og_image %}{{ abs_url('/static/images/og-default.png') }}{% endblock %}">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{% block og_title %}{{ site_name }}{% endblock %}">
-  <meta name="twitter:description" content="{% block og_description %}Board and card games by Matt Keen. Rules, videos, and campaign updates.{% endblock %}">
-  <meta name="twitter:image" content="{% block og_image %}{{ abs_url('/static/images/og-default.png') }}{% endblock %}">
+  <meta name="twitter:title" content="{{ self.og_title()|striptags }}">
+  <meta name="twitter:description" content="{{ self.og_description()|striptags }}">
+  <meta name="twitter:image" content="{{ self.og_image()|striptags }}">
 
   <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
 
