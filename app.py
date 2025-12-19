@@ -1,7 +1,7 @@
 import os
 import pathlib
 import datetime as dt
-from flask import Flask, render_template, abort, url_for
+from flask import Flask, render_template, abort, url_for, request
 import yaml
 import markdown as md
 
@@ -101,13 +101,32 @@ def get_page(slug: str) -> dict | None:
 def create_app() -> Flask:
     app = Flask(__name__)
     app.config["TEMPLATES_AUTO_RELOAD"] = True
+    app.config["SITE_URL"] = os.environ.get("SITE_URL", "").rstrip("/")
 
     @app.context_processor
     def inject_globals():
         return {
             "site_name": "Matt Keen Games",
-            "now_year": dt.datetime.now().year
+            "now_year": dt.datetime.now().year,
         }
+
+    @app.template_global()
+    def abs_url(path: str) -> str:
+        """Make an absolute URL for OpenGraph/Twitter tags."""
+        if not path:
+            return ""
+        if path.startswith("http://") or path.startswith("https://"):
+            return path
+
+        base = app.config.get("SITE_URL")
+        if not base:
+            # Fallback: use current request host (works on Railway URL too)
+            base = request.url_root.rstrip("/")
+
+        if not path.startswith("/"):
+            path = "/" + path
+        return base + path
+
 
     @app.route("/")
     def home():

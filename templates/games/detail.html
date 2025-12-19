@@ -1,11 +1,17 @@
 {% extends "base.html" %}
 {% block title %}{{ game.title }} · {{ site_name }}{% endblock %}
 
-{% block meta %}
-<meta name="description" content="{{ game.tagline }}">
-<meta property="og:title" content="{{ game.title }} · {{ site_name }}">
-<meta property="og:description" content="{{ game.tagline }}">
-{% if game.hero_image %}<meta property="og:image" content="{{ game.hero_image }}">{% endif %}
+
+{% block og_type %}article{% endblock %}
+{% block og_title %}{{ game.title }} · {{ site_name }}{% endblock %}
+{% block og_description %}{{ game.tagline }}{% endblock %}
+{% block og_url %}{{ abs_url(url_for('game_detail', slug=game.slug)) }}{% endblock %}
+{% block og_image %}
+  {% if game.hero_image %}
+    {{ abs_url(game.hero_image) }}
+  {% else %}
+    {{ abs_url('/static/images/og-default.png') }}
+  {% endif %}
 {% endblock %}
 
 {% block content %}

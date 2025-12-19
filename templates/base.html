@@ -10,9 +10,19 @@
   {% endblock %}
 
   <meta property="og:site_name" content="{{ site_name }}">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+  <meta property="og:title" content="{% block og_title %}{{ site_name }}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Board and card games by Matt Keen. Rules, videos, and campaign updates.{% endblock %}">
+  <meta property="og:url" content="{% block og_url %}{{ abs_url(request.path) }}{% endblock %}">
+  <meta property="og:image" content="{% block og_image %}{{ abs_url('/static/images/og-default.png') }}{% endblock %}">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% block og_title %}{{ site_name }}{% endblock %}">
+  <meta name="twitter:description" content="{% block og_description %}Board and card games by Matt Keen. Rules, videos, and campaign updates.{% endblock %}">
+  <meta name="twitter:image" content="{% block og_image %}{{ abs_url('/static/images/og-default.png') }}{% endblock %}">
 
   <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+
 </head>
 <body>
   {% include "partials/nav.html" %}
