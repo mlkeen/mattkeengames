@@ -187,3 +187,42 @@ a:hover{text-decoration:underline}
 .ks{margin-top:12px; padding:12px 12px}
 .ks-top{display:flex; justify-content:space-between; align-items:center; gap:10px}
 .ks-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+
+
+.newsletter{
+  padding:18px;
+}
+
+.newsletter h3{
+  margin:0 0 6px;
+}
+
+.newsletter form{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+  flex-wrap:wrap;
+}
+
+.newsletter input[type="email"]{
+  flex:1;
+  min-width:220px;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+}
+
+.newsletter input[type="submit"]{
+  padding:10px 14px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background: linear-gradient(
+    90deg,
+    rgba(155,123,255,.55),
+    rgba(73,230,190,.35)
+  );
+  color:#fff;
+  cursor:pointer;
+}
