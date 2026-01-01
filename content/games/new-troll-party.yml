@@ -25,7 +25,7 @@ how_it_plays:
 hero_image: /static/images/games/new-troll-party/under_bridge.png
 
 rules:
-  pdf: /static/downloads/new-troll-party-rules.pdf
+  pdf: /static/downloads/new-troll-party-rules-v0.3.pdf
   online: false
 
 videos:
