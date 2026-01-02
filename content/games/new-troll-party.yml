@@ -8,13 +8,13 @@ status: coming_soon
 featured: true
 
 description: >
-  In New Troll Party, each round everyone secretly bids at the table.
+  In New Troll Party, each round everyone secretly bids in three "scuffles".
   Win the middle bid to take the scuffle — or deliberately go high or low
   to steal goats and shift the balance.
   After twelve scuffles, the troll who ends up in the middle wins.
 
 how_it_plays:
-  - Everyone secretly plays one card each round.
+  - Everyone secretly places bids each round.
   - The middle card wins the scuffle.
   - The highest or lowest card manipulates goats instead.
   - You must win some scuffles, but not too many.
@@ -26,7 +26,7 @@ hero_image: /static/images/games/new-troll-party/under_bridge.png
 
 rules:
   pdf: /static/downloads/new-troll-party-rules-v0.3.pdf
-  online: false
+  online: true
 
 videos:
   - type: youtube

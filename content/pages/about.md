@@ -2,7 +2,7 @@
 title: About
 ---
 
-I’m Matt — I design board and card games with a mix of humor and hard edges.
+I’m Matt — I design tabletop games, with the goal of building elegant games around interesting mechanics.
 
 This site is a home base for:
 - downloadable rules,
