@@ -8,7 +8,6 @@ import markdown as md
 BASE_DIR = pathlib.Path(__file__).resolve().parent
 CONTENT_DIR = BASE_DIR / "content"
 GAMES_DIR = CONTENT_DIR / "games"
-WORKSHOP_DIR = CONTENT_DIR / "workshop"
 BLOG_DIR = CONTENT_DIR / "blog"
 PAGES_DIR = CONTENT_DIR / "pages"
 
