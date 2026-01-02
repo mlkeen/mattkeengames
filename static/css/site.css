@@ -1,27 +1,36 @@
 /* Minimal, dependency-free styling. Tweak freely. */
 :root{
-  --bg:#0f1220;        /* slightly lighter than before */
-  --panel:#171c2f;     /* brighter panel */
-  --panel2:#14192b;    /* subtle second panel */
-  --text:#f3f5fb;      /* brighter text */
-  --muted:#c2c9de;     /* brighter muted text */
-  --line:#2f3650;      /* clearer borders */
-  --accent:#9b7bff;    /* brighter purple */
-  --accent2:#49e6be;   /* brighter teal */
-  --shadow: 0 12px 34px rgba(0,0,0,.28);
+  --bg:#f7f8fb;          /* page background */
+  --panel:#ffffff;      /* card background */
+  --panel2:#f1f3f8;     /* subtle alt panel */
+  --text:#1b1f2a;       /* main text */
+  --muted:#5f6b85;      /* secondary text */
+  --line:#d8dde8;       /* borders */
+  --accent:#7b5cff;     /* purple */
+  --accent2:#2fc7a1;    /* teal */
+  --shadow: 0 10px 28px rgba(30,40,60,.10);
 }
+
 
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  background:
-    radial-gradient(1100px 650px at 18% 0%, rgba(155,123,255,.28), transparent 60%),
-    radial-gradient(900px 520px at 85% 10%, rgba(73,230,190,.18), transparent 55%),
-    radial-gradient(700px 420px at 50% 115%, rgba(255,255,255,.06), transparent 60%),
-    var(--bg);
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f4f6fb 100%
+  );
   color:var(--text);
+}
+
+h1, h2, h3{
+  letter-spacing:-0.01em;
+}
+
+.hero h1{
+  font-weight:800;
 }
 
 
@@ -63,13 +72,16 @@ a:hover{text-decoration:underline}
 .section-head h2{margin:0}
 .muted{color:var(--muted)}
 
-.card{
-  background: linear-gradient(180deg, rgba(255,255,255,.04), transparent 35%), var(--panel);
+
+.card,
+.tile{
+  background: var(--panel);
   border:1px solid var(--line);
   border-radius:16px;
   box-shadow: var(--shadow);
-  overflow:hidden;
 }
+
+
 .card.subtle{background: var(--panel2); box-shadow:none}
 .card-header{padding:16px 16px 0}
 .card-body{padding:16px}
@@ -77,17 +89,21 @@ a:hover{text-decoration:underline}
 .kicker{font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-bottom:6px}
 
 .btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  padding:10px 14px;
-  border-radius:12px;
+  background:#ffffff;
   border:1px solid var(--line);
-  background: rgba(255,255,255,.03);
-  text-decoration:none;
+  color:var(--text);
 }
+
+
 .btn:hover{border-color: rgba(255,255,255,.25); text-decoration:none}
 .btn.primary{
-  background: linear-gradient(90deg, rgba(155,123,255,.50), rgba(73,230,190,.28));
-  border-color: rgba(155,123,255,.60);
+  background: linear-gradient(
+    90deg,
+    rgba(123,92,255,.95),
+    rgba(47,199,161,.95)
+  );
+  border: none;
+  color: #fff;
 }
 .btn.small{padding:8px 10px; border-radius:10px}
 .btn.full{width:100%}
@@ -110,13 +126,6 @@ a:hover{text-decoration:underline}
 }
 @media (max-width: 900px){ .grid{grid-template-columns:1fr} }
 
-.tile{
-  background: rgba(255,255,255,.03);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:14px;
-  transition: transform .08s ease, border-color .08s ease;
-}
 .tile:hover{transform: translateY(-2px); border-color: rgba(255,255,255,.25); text-decoration:none}
 .tile-title{font-weight:750; margin-bottom:4px}
 .tile-sub{margin-bottom:10px}
