@@ -1,209 +1,225 @@
-/* Minimal, dependency-free styling. Tweak freely. */
+/* ============================================================
+   Matt Keen Games – Site Styles
+   Light Theme with Green-Teal Accent
+   ============================================================ */
+
+/* ============================================================
+   Root Color System
+   ============================================================ */
+
 :root{
-  --bg:#f7f8fb;          /* page background */
-  --panel:#ffffff;      /* card background */
-  --panel2:#f1f3f8;     /* subtle alt panel */
-  --text:#1b1f2a;       /* main text */
-  --muted:#5f6b85;      /* secondary text */
-  --line:#d8dde8;       /* borders */
-  --accent:#7b5cff;     /* purple */
-  --accent2:#2fc7a1;    /* teal */
-  --shadow: 0 10px 28px rgba(30,40,60,.10);
-}
+  /* Core surfaces */
+  --bg: #f6f8f7;
+  --panel: #ffffff;
+  --panel2: #eef5f3;
 
+  /* Text */
+  --text: #182422;
+  --muted: #5f7470;
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  background: linear-gradient(
+  /* Borders & dividers */
+  --line: #d3e0dc;
+  --line-hover: #b7cfca;
+
+  /* Brand accents */
+  --accent: #6a63ff;        /* purple */
+  --accent2: #2fbfa7;       /* green-teal */
+  --accent3: #1e8f7c;       /* dark teal */
+
+  /* Links */
+  --prose-link: var(--accent3);
+
+  /* Shadows */
+  --shadow: 0 10px 28px rgba(25,60,55,.12);
+
+  /* Header */
+  --header-bg: rgba(255,255,255,.85);
+
+  /* Translucent surfaces */
+  --surface-06: rgba(47,191,167,.06);
+  --surface-12: rgba(47,191,167,.12);
+
+  /* Gradients */
+  --grad-primary: linear-gradient(
+    90deg,
+    rgba(47,191,167,.95),
+    rgba(106,99,255,.90)
+  );
+
+  --grad-soft: linear-gradient(
     180deg,
     #ffffff 0%,
-    #f4f6fb 100%
+    #f2f7f6 100%
   );
-  color:var(--text);
 }
 
-h1, h2, h3{
+/* ============================================================
+   Global Reset & Base
+   ============================================================ */
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+               "Apple Color Emoji","Segoe UI Emoji";
+  background: var(--grad-soft);
+  color: var(--text);
+}
+
+/* ============================================================
+   Typography
+   ============================================================ */
+
+h1,h2,h3{
   letter-spacing:-0.01em;
+  margin-top:0;
 }
 
-.hero h1{
+h1{
   font-weight:800;
 }
 
-
-a{color:inherit; text-decoration:none}
-a:hover{text-decoration:underline}
-
-.container{max-width:1100px; margin:0 auto; padding:0 18px}
-
-.site-header{
-  position:sticky; top:0; z-index:10;
-  background: rgba(11,13,18,.7);
-  backdrop-filter: blur(10px);
-  border-bottom:1px solid var(--line);
+p{
+  line-height:1.6;
 }
-.header-row{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
-.brand{font-weight:800; letter-spacing:.2px}
-.nav{display:flex; gap:14px}
-.nav a{color:var(--muted)}
-.nav a:hover{color:var(--text); text-decoration:none}
 
-.site-footer{
-  border-top:1px solid var(--line);
-  margin-top:50px;
-  padding:22px 0;
+.muted{
   color:var(--muted);
 }
-.footer-row{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap}
-.footer-links{display:flex; gap:14px}
 
-.hero{display:grid; grid-template-columns: 1.1fr .9fr; gap:22px; padding:34px 0 10px}
-@media (max-width: 900px){ .hero{grid-template-columns:1fr} }
+a{
+  color:var(--prose-link);
+  text-decoration:none;
+}
 
-.hero-text h1{font-size:44px; line-height:1.05; margin:0 0 10px}
-.lede{font-size:18px; color:var(--muted); margin:0 0 16px}
-.cta-row{display:flex; gap:12px; flex-wrap:wrap}
+a:hover{
+  text-decoration:underline;
+}
 
-.section{padding:26px 0}
-.section-head{display:flex; justify-content:space-between; align-items:baseline; gap:14px; margin-bottom:12px}
-.section-head h2{margin:0}
-.muted{color:var(--muted)}
+/* ============================================================
+   Layout Containers
+   ============================================================ */
 
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  padding:24px;
+}
+
+.section{
+  margin:40px 0;
+}
+
+/* ============================================================
+   Header & Navigation
+   ============================================================ */
+
+header{
+  position:sticky;
+  top:0;
+  background:var(--header-bg);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+  z-index:100;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+nav a{
+  color:var(--text);
+  font-weight:600;
+}
+
+nav a:hover{
+  color:var(--accent3);
+}
+
+/* ============================================================
+   Cards & Tiles
+   ============================================================ */
 
 .card,
 .tile{
-  background: var(--panel);
+  background:var(--panel);
   border:1px solid var(--line);
   border-radius:16px;
-  box-shadow: var(--shadow);
+  box-shadow:var(--shadow);
+  padding:20px;
 }
 
+.tile:hover{
+  border-color:var(--line-hover);
+}
 
-.card.subtle{background: var(--panel2); box-shadow:none}
-.card-header{padding:16px 16px 0}
-.card-body{padding:16px}
-.card-image{width:100%; height:220px; object-fit:cover; border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
-.kicker{font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-bottom:6px}
+/* ============================================================
+   Hero Section
+   ============================================================ */
+
+.hero{
+  display:grid;
+  gap:24px;
+  align-items:center;
+}
+
+.hero img{
+  width:100%;
+  border-radius:16px;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
 
 .btn{
-  background:#ffffff;
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:12px;
   border:1px solid var(--line);
+  background:var(--panel);
   color:var(--text);
+  font-weight:600;
+  cursor:pointer;
 }
 
+.btn:hover{
+  border-color:var(--line-hover);
+}
 
-.btn:hover{border-color: rgba(255,255,255,.25); text-decoration:none}
 .btn.primary{
-  background: linear-gradient(
-    90deg,
-    rgba(123,92,255,.95),
-    rgba(47,199,161,.95)
-  );
-  border: none;
-  color: #fff;
-}
-.btn.small{padding:8px 10px; border-radius:10px}
-.btn.full{width:100%}
-
-.pill-row{display:flex; gap:8px; flex-wrap:wrap; margin:12px 0}
-.pill{
-  display:inline-flex; align-items:center;
-  padding:6px 10px;
-  border-radius:999px;
-  border:1px solid var(--line);
-  color:var(--muted);
-  font-size:13px;
-  background: rgba(255,255,255,.02);
+  background:var(--grad-primary);
+  border:none;
+  color:#fff;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap:12px;
-}
-@media (max-width: 900px){ .grid{grid-template-columns:1fr} }
+/* ============================================================
+   Lists & Prose Blocks
+   ============================================================ */
 
-.tile:hover{transform: translateY(-2px); border-color: rgba(255,255,255,.25); text-decoration:none}
-.tile-title{font-weight:750; margin-bottom:4px}
-.tile-sub{margin-bottom:10px}
-.tile-meta{display:flex; gap:8px; flex-wrap:wrap}
-
-.stack{display:flex; flex-direction:column; gap:10px}
-.row{
-  display:flex; justify-content:space-between; align-items:center;
-  gap:14px;
-  padding:14px;
-  border-radius:16px;
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.02);
-}
-.row:hover{border-color: rgba(255,255,255,.25); text-decoration:none}
-.row-title{font-weight:700}
-
-.page-head{padding:26px 0 6px}
-.page-head h1{margin:0 0 6px; font-size:36px}
-
-.game-hero{
-  display:grid;
-  grid-template-columns: 1.05fr .95fr;
-  gap:18px;
-  padding:26px 0 10px;
-}
-@media (max-width: 900px){ .game-hero{grid-template-columns:1fr} }
-.hero-image{
-  width:100%;
-  height:360px;
-  object-fit:cover;
-  border-radius:16px;
-  border:1px solid var(--line);
-  box-shadow: var(--shadow);
-}
-.image-placeholder{
-  height:360px;
-  display:flex; align-items:center; justify-content:center;
-  border:1px dashed var(--line);
-  border-radius:16px;
-  color:var(--muted);
-  padding:16px;
+ul.prose{
+  padding-left:20px;
 }
 
-.video-grid{
-  display:grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap:12px;
+ul.prose li{
+  margin-bottom:8px;
 }
-@media (max-width: 900px){ .video-grid{grid-template-columns:1fr} }
-.video-card{
-  border:1px solid var(--line);
-  border-radius:16px;
-  overflow:hidden;
-  background: rgba(255,255,255,.02);
-}
-.video-frame{position:relative; padding-top:56.25%}
-.video-frame iframe{position:absolute; inset:0; width:100%; height:100%}
-.video-label{padding:10px 12px; color:var(--muted)}
 
-.article{padding:26px 0}
-.article-head h1{margin:0 0 6px; font-size:38px}
-.prose{color:var(--text); line-height:1.65}
-.prose h2{margin-top:24px}
-.prose a{color: #c7c3ff}
-.spacer{height:10px}
-
-.ks{margin-top:12px; padding:12px 12px}
-.ks-top{display:flex; justify-content:space-between; align-items:center; gap:10px}
-.ks-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
-
+/* ============================================================
+   Newsletter Signup
+   ============================================================ */
 
 .newsletter{
-  padding:18px;
-}
-
-.newsletter h3{
-  margin:0 0 6px;
+  background:var(--panel2);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:20px;
 }
 
 .newsletter form{
@@ -219,19 +235,27 @@ a:hover{text-decoration:underline}
   padding:10px 12px;
   border-radius:12px;
   border:1px solid var(--line);
-  background: rgba(255,255,255,.06);
-  color: var(--text);
+  background:var(--panel);
+  color:var(--text);
 }
 
 .newsletter input[type="submit"]{
   padding:10px 14px;
   border-radius:12px;
-  border:1px solid var(--line);
-  background: linear-gradient(
-    90deg,
-    rgba(155,123,255,.55),
-    rgba(73,230,190,.35)
-  );
+  border:none;
+  background:var(--grad-primary);
   color:#fff;
+  font-weight:600;
   cursor:pointer;
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+
+footer{
+  margin-top:60px;
+  padding:32px 24px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
 }
