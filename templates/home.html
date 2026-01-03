@@ -14,46 +14,45 @@
 
   {% if featured %}
     <div class="card">
-      <div class="card-header">
-        <div class="kicker">Featured</div>
+      <div>
+        <div>Featured</div>
         <h2><a href="{{ url_for('game_detail', slug=featured.slug) }}">{{ featured.title }}</a></h2>
         <p class="muted">{{ featured.tagline }}</p>
       </div>
 
       {% if featured.hero_image %}
-      <img class="card-image" src="{{ featured.hero_image }}" alt="{{ featured.title }} hero image">
+      <img src="{{ featured.hero_image }}" alt="{{ featured.title }} hero image">
       {% endif %}
 
-      <div class="card-body">
-        <div class="pill-row">
-          {% if featured.players %}<span class="pill">{{ featured.players }} players</span>{% endif %}
-          {% if featured.playtime %}<span class="pill">{{ featured.playtime }}</span>{% endif %}
-          {% if featured.age %}<span class="pill">{{ featured.age }}</span>{% endif %}
+      <div>
+        <div>
+          {% if featured.players %}<span>{{ featured.players }} players</span>{% endif %}
+          {% if featured.playtime %}<span>{{ featured.playtime }}</span>{% endif %}
+          {% if featured.age %}<span>{{ featured.age }}</span>{% endif %}
         </div>
 
         {% set game = featured %}
         {% include "components/kickstarter_card.html" %}
-        <div class="spacer"></div>
-        <a class="btn primary full" href="{{ url_for('game_detail', slug=featured.slug) }}">View game page</a>
+        <a class="btn primary" href="{{ url_for('game_detail', slug=featured.slug) }}">View game page</a>
       </div>
     </div>
   {% endif %}
 </section>
 
 <section class="section">
-  <div class="section-head">
+  <div>
     <h2>Games</h2>
     <a class="muted" href="{{ url_for('games_index') }}">See all →</a>
   </div>
 
-  <div class="grid">
+  <div>
     {% for g in games %}
       <a class="tile" href="{{ url_for('game_detail', slug=g.slug) }}">
         <div class="tile-title">{{ g.title }}</div>
         <div class="tile-sub muted">{{ g.tagline }}</div>
         <div class="tile-meta">
-          {% if g.players %}<span class="pill">{{ g.players }} players</span>{% endif %}
-          {% if g.playtime %}<span class="pill">{{ g.playtime }}</span>{% endif %}
+          {% if g.players %}<span>{{ g.players }} players</span>{% endif %}
+          {% if g.playtime %}<span>{{ g.playtime }}</span>{% endif %}
         </div>
       </a>
     {% endfor %}
@@ -61,16 +60,16 @@
 </section>
 
 <section class="section">
-  <div class="section-head">
+  <div>
     <h2>Latest Updates</h2>
     <a class="muted" href="{{ url_for('blog_index') }}">All posts →</a>
   </div>
   {% if posts %}
-    <div class="stack">
+    <div>
       {% for p in posts %}
-        <a class="row" href="{{ url_for('blog_post', slug=p.slug) }}">
+        <a href="{{ url_for('blog_post', slug=p.slug) }}">
           <div>
-            <div class="row-title">{{ p.title }}</div>
+            <div>{{ p.title }}</div>
             <div class="muted">{% if p.date %}{{ p.date }}{% else %}—{% endif %}</div>
           </div>
           <div class="muted">Read →</div>
