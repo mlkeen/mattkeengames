@@ -47,7 +47,7 @@
 
   <div>
     {% for g in games %}
-      <a class="tile" href="{{ url_for('game_detail', slug=g.slug) }}">
+      <a class="card" href="{{ url_for('game_detail', slug=g.slug) }}">
         <div>{{ g.title }}</div>
         <div>{{ g.tagline }}</div>
         <div>
