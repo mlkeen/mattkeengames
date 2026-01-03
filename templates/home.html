@@ -13,7 +13,6 @@
   </div>
 
   {% if featured %}
-  <div class="hero-card">
     <div class="card">
       <div class="card-header">
         <div class="kicker">Featured</div>
@@ -38,7 +37,6 @@
         <a class="btn primary full" href="{{ url_for('game_detail', slug=featured.slug) }}">View game page</a>
       </div>
     </div>
-  </div>
   {% endif %}
 </section>
 
