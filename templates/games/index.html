@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Games · !*(&(@*&@&@ {{ site_name }}{% endblock %}
+{% block title %}Games · {{ site_name }}{% endblock %}
 
 {% block content %}
 <section class="page-head">
@@ -15,7 +15,7 @@
       <div class="tile-meta">
         {% if g.players %}<span class="pill">{{ g.players }} players</span>{% endif %}
         {% if g.playtime %}<span class="pill">{{ g.playtime }}</span>{% endif %}
-        {% if g.status %}<span class="pill">{{ g.status|replace('_',' ')|title }}</span>{% endif %}
+        {% if g.status %}<span class="pill">{{ g.status|replace('_',' ')|title }}</span>{% endif %} !!!Bugtest
       </div>
     </a>
   {% endfor %}
