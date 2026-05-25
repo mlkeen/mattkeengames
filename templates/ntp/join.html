@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Join Game{% endblock %}
+
+{% block content %}
+<div class="section card">
+  <h1>Join New Troll Party</h1>
+
+  <p>Game Code: <strong>{{ game.code }}</strong></p>
+
+  <p>
+    Players Joined:
+    {{ game.players|length }}/3
+  </p>
+
+  <form method="post">
+    <input
+      type="text"
+      name="name"
+      placeholder="Your Troll Name"
+      required
+    >
+
+    <button class="btn primary">Join</button>
+  </form>
+</div>
+{% endblock %}

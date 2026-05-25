@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}New Troll Party Online{% endblock %}
+
+{% block content %}
+<div class="section">
+  <h1>New Troll Party Online</h1>
+
+  <p>
+    A three-player game of tactical scuffles,
+    suspicious goats,
+    and trying not to come in first too often.
+  </p>
+
+  <form method="post" action="{{ url_for('ntp.ntp_create') }}">
+    <button class="btn primary">Create Game</button>
+  </form>
+</div>
+{% endblock %}
