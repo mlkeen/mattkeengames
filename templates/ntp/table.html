@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}New Troll Party{% endblock %}
+
+{% block content %}
+<div class="section">
+
+  <div class="card">
+    <h1>New Troll Party</h1>
+
+    <p>
+      Game {{ game.code }}
+      | Phase: {{ game.phase }}
+    </p>
+  </div>
+
+  <div class="section ntp-table">
+    {% for play in game.plays %}
+      <div class="ntp-play-slot card">
+        <img
+          src="{{ url_for('static', filename=play.card.image) }}"
+          class="ntp-card"
+        >
+
+        <div>{{ play.player_name }}</div>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if player %}
+  <div class="section">
+    <h2>Your Hand</h2>
+
+    <div class="ntp-hand">
+      {% for card in player.hand %}
+      <form
+        method="post"
+        action="{{ url_for('ntp.ntp_play', code=game.code) }}"
+      >
+        <input
+          type="hidden"
+          name="card_id"
+          value="{{ card.id }}"
+        >
+
+        <button class="ntp-card-button">
+          <img
+            src="{{ url_for('static', filename=card.image) }}"
+            class="ntp-card"
+          >
+        </button>
+      </form>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="section card">
+    <h2>Scoreboard</h2>
+
+    {% for p in game.players %}
+      <div>
+        <strong>{{ p.name }}</strong>
+        | Scuffles: {{ p.score }}
+        | Goats: {{ p.goats }}
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="section card">
+    <h2>Log</h2>
+
+    {% for entry in game.log|reverse %}
+      <div>{{ entry }}</div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

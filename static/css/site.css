@@ -278,3 +278,39 @@ footer{
   border-top:1px solid var(--line);
   color:var(--muted);
 }
+
+
+.ntp-hand{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.ntp-card{
+  width:140px;
+  border-radius:4px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+
+.ntp-card-button{
+  border:none;
+  background:none;
+  padding:0;
+  cursor:pointer;
+}
+
+.ntp-card-button:hover{
+  transform:translateY(-2px);
+}
+
+.ntp-table{
+  display:flex;
+  gap:24px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.ntp-play-slot{
+  text-align:center;
+}
