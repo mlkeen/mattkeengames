@@ -102,6 +102,10 @@ def create_app() -> Flask:
     app = Flask(__name__)
     app.config["TEMPLATES_AUTO_RELOAD"] = True
     app.config["SITE_URL"] = os.environ.get("SITE_URL", "").rstrip("/")
+    app.secret_key = os.environ.get("SECRET_KEY", "dev-secret-key-change-me")
+
+    from new_troll_party_online import ntp_bp
+    app.register_blueprint(ntp_bp)
 
     @app.context_processor
     def inject_globals():

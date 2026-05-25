@@ -34,6 +34,18 @@
       {% if game.kickstarter and game.kickstarter.url %}
         <a class="btn" href="{{ game.kickstarter.url }}" target="_blank">Kickstarter</a>
       {% endif %}
+      
+      {% if game.slug == "new-troll-party" %}
+        <div class="section">
+          <a
+            href="/new-troll-party"
+            class="btn primary"
+          >
+            Play Online
+          </a>
+        </div>
+      {% endif %}
+
     </div>
 
     {% include "components/kickstarter_card.html" with context %}
