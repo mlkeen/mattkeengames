@@ -1,6 +1,7 @@
 import json
 import random
 import secrets
+import re
 from pathlib import Path
 
 from flask import (
@@ -27,30 +28,71 @@ GAME_STATE_DIR.mkdir(parents=True, exist_ok=True)
 PLAYER_COLORS = ["green", "orange", "purple"]
 
 COLOR_CARD_BACKS = {
-    "green": "games/new-troll-party/cards/green/ntp_green_back.png",
-    "orange": "games/new-troll-party/cards/orange/ntp_orange_back.png",
-    "purple": "games/new-troll-party/cards/purple/ntp_purple_back.png",
+    "green": "games/new-troll-party/cards/green/NTP_back_green.png",
+    "orange": "games/new-troll-party/cards/orange/NTP_back_orange.png",
+    "purple": "games/new-troll-party/cards/purple/NTP_back_purple.png",
 }
 
-CARD_VALUES = list(range(1, 10))
-
+CARD_FOLDER = (
+    BASE_DIR /
+    "static" /
+    "games" /
+    "new-troll-party" /
+    "cards"
+)
 
 def make_color_deck(color):
+
     deck = []
 
-    for value in CARD_VALUES:
-        deck.append({
-            "id": f"{color}_{value}",
+    color_dir = CARD_FOLDER / color
+
+    image_files = sorted(color_dir.glob("*.png"))
+
+    for image_path in image_files:
+
+        filename = image_path.stem.lower()
+
+        if "back" in filename:
+            continue
+
+        card = {
+            "id": filename,
             "color": color,
-            "value": value,
-            "goats": 1 if value in [1, 5, 9, 13] else 0,
-            "image": f"games/new-troll-party/cards/{color}/ntp_{color}_{value:03}.png",
+            "image": (
+                f"games/new-troll-party/cards/"
+                f"{color}/{image_path.name}"
+            ),
             "back": COLOR_CARD_BACKS[color],
-        })
+            "type": "number",
+            "value": None,
+            "goat_effect": parse_goat_effect(filename),
+            "endgame_action": None,
+        }
+
+        number_match = re.search(r"_(\d{1,2})", filename)
+
+        if number_match:
+            card["value"] = int(number_match.group(1))
+
+        if "endgame" in filename:
+            card["type"] = "endgame"
+
+            action_name = filename.replace(
+                f"ntp_{color}_endgame_",
+                ""
+            )
+
+            # Strip goat tag from action name
+            action_name = re.sub(r"_goat-?\d+", "", action_name)
+
+            card["endgame_action"] = action_name
+
+        deck.append(card)
 
     random.shuffle(deck)
-    return deck
 
+    return deck
 
 
 
@@ -226,7 +268,7 @@ def reveal(game):
         if p["id"] == winner["player_id"]
     )
 
-    total_goats = sum(p["card"]["goats"] for p in plays)
+    total_goats = sum(p["card"].get("goat_effect", 0) for p in plays)
 
     winning_player["score"] += 1
     winning_player["goats"] += total_goats
